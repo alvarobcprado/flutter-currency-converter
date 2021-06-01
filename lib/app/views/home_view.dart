@@ -54,6 +54,7 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           CurrencyConverterRow(
+            readOnly: false,
             label: "Converter",
             options: homeCtrl.currencies,
             selectedItem: homeCtrl.fromCurrency,
@@ -65,6 +66,7 @@ class _HomeViewState extends State<HomeView> {
             },
           ),
           CurrencyConverterRow(
+            readOnly: true,
             label: "Resultado",
             options: homeCtrl.currencies,
             selectedItem: homeCtrl.toCurrency,

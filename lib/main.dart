@@ -16,6 +16,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        textSelectionTheme: TextSelectionThemeData(
+          selectionHandleColor: Colors.white,
+          cursorColor: Colors.white,
+        ),
       ),
       home: HomeView(),
     );

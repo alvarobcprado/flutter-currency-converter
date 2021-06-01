@@ -1,5 +1,6 @@
-import 'package:currency_converter/app/models/currency_model.dart';
 import 'package:flutter/material.dart';
+
+import 'package:currency_converter/app/models/currency_model.dart';
 
 class CurrencyConverterRow extends StatefulWidget {
   final String label;
@@ -7,14 +8,16 @@ class CurrencyConverterRow extends StatefulWidget {
   final CurrencyModel selectedItem;
   final TextEditingController controller;
   final void Function(CurrencyModel? model)? onChanged;
+  final bool readOnly;
 
-  const CurrencyConverterRow({
+  CurrencyConverterRow({
     Key? key,
+    required this.label,
     required this.options,
+    required this.selectedItem,
     required this.controller,
     required this.onChanged,
-    required this.selectedItem,
-    required this.label,
+    required this.readOnly,
   }) : super(key: key);
 
   @override
@@ -49,6 +52,7 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
 
   Widget _buildTextFieldWidget() {
     return TextField(
+      readOnly: widget.readOnly,
       controller: widget.controller,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
