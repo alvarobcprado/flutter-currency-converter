@@ -25,15 +25,15 @@ class HgApiModel {
 
   HgApiModel.fromJson(Map<String, dynamic> json) {
     source = json['source'];
-    usd = json['USD'] = Currency.fromJson(json['Currency']);
-    eur = json['EUR'] = Currency.fromJson(json['EUR']);
-    gbp = json['GBP'] = Currency.fromJson(json['GBP']);
-    ars = json['ARS'] = Currency.fromJson(json['ARS']);
-    cad = json['CAD'] = Currency.fromJson(json['CAD']);
-    aud = json['AUD'] = Currency.fromJson(json['AUD']);
-    jpy = json['JPY'] = Currency.fromJson(json['JPY']);
-    cny = json['CNY'] = Currency.fromJson(json['CNY']);
-    btc = json['BTC'] = Currency.fromJson(json['BTC']);
+    usd = Currency.fromJson(json['USD']);
+    eur = Currency.fromJson(json['EUR']);
+    gbp = Currency.fromJson(json['GBP']);
+    ars = Currency.fromJson(json['ARS']);
+    cad = Currency.fromJson(json['CAD']);
+    aud = Currency.fromJson(json['AUD']);
+    jpy = Currency.fromJson(json['JPY']);
+    cny = Currency.fromJson(json['CNY']);
+    btc = Currency.fromJson(json['BTC']);
   }
 
   Map<String, dynamic> toJson() {
