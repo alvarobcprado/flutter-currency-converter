@@ -15,4 +15,15 @@ class HgApiRepository {
       throw Exception("Deu algo errado hein, esse foi o erro: $e");
     }
   }
+
+  Future<List<Currency>> fetchCurrencyList() async {
+    final currencies = await fetchData();
+    final List<Currency> listCurrencies = <Currency>[
+      currencies.brl,
+      currencies.usd,
+      currencies.eur,
+      currencies.btc
+    ];
+    return listCurrencies;
+  }
 }
