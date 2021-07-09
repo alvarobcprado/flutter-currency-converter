@@ -9,7 +9,7 @@ main() {
     () async {
       var data = await repo.fetchData();
       //print(data["source"] + data['USD']['name']);
-      print(isA<HgApiModel>());
+      print(data.source);
       expect(data, isA<HgApiModel>());
     },
   );
