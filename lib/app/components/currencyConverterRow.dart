@@ -77,7 +77,7 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
       //mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          flex: 2,
+          flex: 3,
           child: _buildDropdownFieldWidget(),
         ),
         SizedBox(width: 20),

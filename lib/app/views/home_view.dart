@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:currency_converter/app/components/currencyConverterRow.dart';
 import 'package:currency_converter/app/controllers/home_api_controller.dart';
 import 'package:flutter/material.dart';
@@ -39,16 +41,8 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget buildSucess() {
-    return ListView(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+    return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 50, top: 80),
-          child: Image.asset(
-            "assets/money.png",
-            height: 200,
-          ),
-        ),
         CurrencyConverterRow(
           readOnly: false,
           label: "Converter",
@@ -92,9 +86,9 @@ class _HomeViewState extends State<HomeView> {
       case CurrencyState.starting:
         return Container();
       case CurrencyState.loading:
-        return Container(
-          child: Center(
-            child: CircularProgressIndicator(),
+        return Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
           ),
         );
       case CurrencyState.success:
@@ -110,9 +104,22 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: ValueListenableBuilder(
-        valueListenable: homeCtrl.controllerState,
-        builder: (context, CurrencyState value, child) => manageState(value),
+      body: ListView(
+        padding: EdgeInsets.symmetric(horizontal: 20),
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 50, top: 80),
+            child: Image.asset(
+              "assets/money.png",
+              height: 200,
+            ),
+          ),
+          ValueListenableBuilder(
+            valueListenable: homeCtrl.controllerState,
+            builder: (context, CurrencyState value, child) =>
+                manageState(value),
+          ),
+        ],
       ),
     );
   }
