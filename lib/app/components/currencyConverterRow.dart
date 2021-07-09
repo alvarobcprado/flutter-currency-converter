@@ -1,13 +1,12 @@
+import 'package:currency_converter/app/models/hg_api_model.dart';
 import 'package:flutter/material.dart';
-
-import 'package:currency_converter/app/models/currency_model.dart';
 
 class CurrencyConverterRow extends StatefulWidget {
   final String label;
-  final List<CurrencyModel> options;
-  final CurrencyModel selectedItem;
+  final List<Currency> options;
+  final Currency? selectedItem;
   final TextEditingController controller;
-  final void Function(CurrencyModel? model)? onChanged;
+  final void Function(Currency? model)? onChanged;
   final bool readOnly;
 
   CurrencyConverterRow({
@@ -26,7 +25,7 @@ class CurrencyConverterRow extends StatefulWidget {
 
 class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
   Widget _buildDropdownFieldWidget() {
-    return DropdownButton<CurrencyModel>(
+    return DropdownButton<Currency>(
       value: widget.selectedItem,
       isExpanded: true,
       itemHeight: 65,
@@ -41,7 +40,7 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
       onChanged: widget.onChanged,
       items: widget.options
           .map(
-            (e) => DropdownMenuItem<CurrencyModel>(
+            (e) => DropdownMenuItem<Currency>(
               child: Text(e.name.toUpperCase()),
               value: e,
             ),
@@ -78,12 +77,12 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
       //mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          flex: 1,
+          flex: 2,
           child: _buildDropdownFieldWidget(),
         ),
         SizedBox(width: 20),
         Expanded(
-          flex: 4,
+          flex: 6,
           child: _buildTextFieldWidget(),
         ),
       ],
