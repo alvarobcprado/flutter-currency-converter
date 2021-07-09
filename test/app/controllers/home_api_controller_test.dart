@@ -48,7 +48,7 @@ main() {
       homeApiController.toCurrency = homeApiController.currencies[0];
       homeApiController.convert();
       print(homeApiController.toTextField.text);
-      expect(homeApiController.toTextField.text, '5.25');
+      expect(homeApiController.toTextField.text, '5.24');
     },
   );
 }
