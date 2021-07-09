@@ -22,7 +22,12 @@ class HgApiRepository {
       currencies.brl,
       currencies.usd,
       currencies.eur,
-      currencies.btc
+      currencies.btc,
+      currencies.cad,
+      currencies.ars,
+      currencies.aud,
+      currencies.jpy,
+      currencies.cny
     ];
     return listCurrencies;
   }

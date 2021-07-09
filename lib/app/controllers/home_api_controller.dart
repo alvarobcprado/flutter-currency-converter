@@ -31,21 +31,7 @@ class HomeApiController {
     String text = fromTextField.text;
     double fromValue = double.tryParse(text.replaceFirst(",", ".")) ?? 1.0;
     double toValue = 0;
-
-    switch (toCurrency!.name) {
-      case "Real":
-        toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
-        break;
-      case "Dollar":
-        toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
-        break;
-      case "Euro":
-        toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
-        break;
-      case "Bitcoin":
-        toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
-        break;
-    }
+    toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
     toTextField.text = toValue.toStringAsFixed(2);
   }
 }
