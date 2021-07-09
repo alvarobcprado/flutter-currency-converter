@@ -1,5 +1,6 @@
 class HgApiModel {
   late String source;
+  Currency brl = Currency(name: 'Real', buy: 1.0);
   late Currency usd;
   late Currency eur;
   late Currency gbp;
