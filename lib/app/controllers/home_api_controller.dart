@@ -9,13 +9,22 @@ class HomeApiController {
   final TextEditingController fromTextField;
   final TextEditingController toTextField;
   final _apiRepo = HgApiRepository();
+  ValueNotifier<CurrencyState> controllerState =
+      ValueNotifier<CurrencyState>(CurrencyState.starting);
 
   HomeApiController({required this.fromTextField, required this.toTextField});
 
   Future start() async {
-    currencies = await _apiRepo.fetchCurrencyList();
-    fromCurrency = currencies[2];
-    toCurrency = currencies[1];
+    controllerState.value = CurrencyState.loading;
+    try {
+      this.currencies = await _apiRepo.fetchCurrencyList();
+      this.fromCurrency = this.currencies[1];
+      this.toCurrency = this.currencies[0];
+      controllerState.value = CurrencyState.success;
+    } catch (e) {
+      controllerState.value = CurrencyState.error;
+      throw Exception("Deu muito errado hein");
+    }
   }
 
   void convert() {
@@ -39,4 +48,11 @@ class HomeApiController {
     }
     toTextField.text = toValue.toStringAsFixed(2);
   }
+}
+
+enum CurrencyState {
+  starting,
+  loading,
+  success,
+  error,
 }
