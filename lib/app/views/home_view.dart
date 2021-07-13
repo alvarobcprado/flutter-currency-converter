@@ -1,6 +1,7 @@
-import 'dart:ffi';
-
+import 'package:currency_converter/app/components/buttonWidget.dart';
 import 'package:currency_converter/app/components/currencyConverterRow.dart';
+import 'package:currency_converter/app/components/loadingContainer.dart';
+import 'package:currency_converter/app/components/placeHolderRow.dart';
 import 'package:currency_converter/app/controllers/home_api_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -27,20 +28,22 @@ class _HomeViewState extends State<HomeView> {
     homeCtrl.start();
   }
 
-  Widget _buildBtnWidget(String name) {
-    return TextButton(
-      onPressed: () {
-        homeCtrl.convert();
-      },
-      style: TextButton.styleFrom(
-        backgroundColor: Colors.white,
-        padding: EdgeInsets.all(10),
-      ),
-      child: Text(name),
+  Widget _buildLoading() {
+    return Column(
+      children: [
+        PlaceHolderRow(),
+        SizedBox(height: 30),
+        PlaceHolderRow(),
+        SizedBox(height: 50),
+        Container(
+          width: 100,
+          child: LoadingContainer(),
+        ),
+      ],
     );
   }
 
-  Widget buildSucess() {
+  Widget _buildSuccess() {
     return Column(
       children: [
         CurrencyConverterRow(
@@ -68,12 +71,12 @@ class _HomeViewState extends State<HomeView> {
           },
         ),
         SizedBox(height: 50),
-        _buildBtnWidget("Converter"),
+        ButtonWidget(name: "Converter", onPressed: homeCtrl.convert),
       ],
     );
   }
 
-  Widget buildError() {
+  Widget _buildError() {
     return Container(
       child: Center(
         child: Text("Algo deu errado x.x"),
@@ -86,15 +89,11 @@ class _HomeViewState extends State<HomeView> {
       case CurrencyState.starting:
         return Container();
       case CurrencyState.loading:
-        return Center(
-          child: CircularProgressIndicator(
-            color: Colors.white,
-          ),
-        );
+        return _buildLoading();
       case CurrencyState.success:
-        return buildSucess();
+        return _buildSuccess();
       case CurrencyState.error:
-        return buildError();
+        return _buildError();
       default:
         return Container();
     }
@@ -118,6 +117,8 @@ class _HomeViewState extends State<HomeView> {
             valueListenable: homeCtrl.controllerState,
             builder: (context, CurrencyState value, child) =>
                 manageState(value),
+            //    _buildLoading(),
+            //_buildSuccess(),
           ),
         ],
       ),
