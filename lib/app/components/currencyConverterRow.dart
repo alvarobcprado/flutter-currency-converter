@@ -1,5 +1,7 @@
 import 'package:currency_converter/app/models/hg_api_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
+import 'package:flutter_multi_formatter/formatters/money_input_formatter.dart';
 
 class CurrencyConverterRow extends StatefulWidget {
   final String label;
@@ -28,7 +30,7 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
     return DropdownButton<Currency>(
       value: widget.selectedItem,
       isExpanded: true,
-      itemHeight: 65,
+      itemHeight: 76,
       iconSize: 20,
       icon: Icon(Icons.arrow_downward, color: Colors.white),
       style: TextStyle(color: Colors.white),
@@ -51,11 +53,18 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
 
   Widget _buildTextFieldWidget() {
     return TextField(
+      inputFormatters: [
+        MoneyInputFormatter(
+          leadingSymbol: MoneySymbols.DOLLAR_SIGN,
+          useSymbolPadding: true,
+          thousandSeparator: ThousandSeparator.None,
+        ),
+      ],
       readOnly: widget.readOnly,
       controller: widget.controller,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
-        hintText: widget.label,
+        labelText: widget.label,
         border: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
@@ -65,7 +74,7 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
-        hintStyle: TextStyle(color: Colors.white),
+        labelStyle: TextStyle(color: Colors.white),
       ),
       style: TextStyle(color: Colors.white),
     );

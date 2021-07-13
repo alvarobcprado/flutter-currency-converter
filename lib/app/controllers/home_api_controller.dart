@@ -1,6 +1,7 @@
 import 'package:currency_converter/app/models/hg_api_model.dart';
 import 'package:currency_converter/app/repositories/hg_api_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class HomeApiController {
   List<Currency> currencies = [];
@@ -28,11 +29,16 @@ class HomeApiController {
   }
 
   void convert() {
-    String text = fromTextField.text;
-    double fromValue = double.tryParse(text.replaceFirst(",", ".")) ?? 1.0;
+    String text = fromTextField.text.replaceFirst("\$ ", "");
+    double fromValue = double.tryParse(text) ?? 1.0;
     double toValue = 0;
     toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
-    toTextField.text = toValue.toStringAsFixed(2);
+    toTextField.text = toCurrencyString(
+      toValue.toStringAsFixed(2),
+      leadingSymbol: '\$',
+      useSymbolPadding: true,
+      thousandSeparator: ThousandSeparator.None,
+    );
   }
 }
 
