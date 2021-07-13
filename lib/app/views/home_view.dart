@@ -15,8 +15,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final TextEditingController fromText = TextEditingController();
-  final TextEditingController toText = TextEditingController();
+  final TextEditingController fromText = TextEditingController(text: "\$ 0.00");
+  final TextEditingController toText = TextEditingController(text: "\$ 0.00");
 
   //late HomeController homeCtrl;
   late HomeApiController homeCtrl;
@@ -31,10 +31,11 @@ class _HomeViewState extends State<HomeView> {
   Widget _buildLoading() {
     return Column(
       children: [
+        SizedBox(height: 25),
         PlaceHolderRow(),
         SizedBox(height: 30),
         PlaceHolderRow(),
-        SizedBox(height: 50),
+        SizedBox(height: 55),
         Container(
           width: 100,
           child: LoadingContainer(),
@@ -55,6 +56,7 @@ class _HomeViewState extends State<HomeView> {
           onChanged: (model) {
             setState(() {
               homeCtrl.fromCurrency = model!;
+              homeCtrl.convert();
             });
           },
         ),
@@ -67,6 +69,7 @@ class _HomeViewState extends State<HomeView> {
           onChanged: (model) {
             setState(() {
               homeCtrl.toCurrency = model!;
+              homeCtrl.convert();
             });
           },
         ),
