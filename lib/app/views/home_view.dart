@@ -81,8 +81,19 @@ class _HomeViewState extends State<HomeView> {
 
   Widget _buildError() {
     return Container(
-      child: Center(
-        child: Text("Algo deu errado x.x"),
+      child: Column(
+        children: [
+          SizedBox(height: 50),
+          Text(
+            "Algo deu errado x.x",
+            style: TextStyle(color: Colors.white),
+          ),
+          SizedBox(height: 10),
+          ButtonWidget(
+            name: "Tentar Novamente",
+            onPressed: homeCtrl.start,
+          )
+        ],
       ),
     );
   }
