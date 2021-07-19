@@ -3,6 +3,7 @@ import 'package:currency_converter/app/components/currencyConverterRow.dart';
 import 'package:currency_converter/app/components/loadingContainer.dart';
 import 'package:currency_converter/app/components/placeHolderRow.dart';
 import 'package:currency_converter/app/controllers/home_api_controller.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatefulWidget {
@@ -15,8 +16,10 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final TextEditingController fromText = TextEditingController(text: "\$ 0.00");
-  final TextEditingController toText = TextEditingController(text: "\$ 0.00");
+  final MoneyMaskedTextController fromText =
+      MoneyMaskedTextController(initialValue: 0.00, leftSymbol: "\$ ");
+  final MoneyMaskedTextController toText =
+      MoneyMaskedTextController(initialValue: 0.00, leftSymbol: "\$ ");
 
   //late HomeController homeCtrl;
   late HomeApiController homeCtrl;
@@ -49,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
       children: [
         CurrencyConverterRow(
           readOnly: false,
-          label: "Converter",
+          label: "Convert",
           options: homeCtrl.currencies,
           selectedItem: homeCtrl.fromCurrency,
           controller: homeCtrl.fromTextField,
@@ -62,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
         ),
         CurrencyConverterRow(
           readOnly: true,
-          label: "Resultado",
+          label: "Result",
           options: homeCtrl.currencies,
           selectedItem: homeCtrl.toCurrency,
           controller: homeCtrl.toTextField,

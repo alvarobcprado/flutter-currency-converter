@@ -1,7 +1,5 @@
 import 'package:currency_converter/app/models/hg_api_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
-import 'package:flutter_multi_formatter/formatters/money_input_formatter.dart';
 
 class CurrencyConverterRow extends StatefulWidget {
   final String label;
@@ -43,7 +41,7 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
       items: widget.options
           .map(
             (e) => DropdownMenuItem<Currency>(
-              child: Text(e.name.toUpperCase()),
+              child: Text(e.name.toString()),
               value: e,
             ),
           )
@@ -53,13 +51,6 @@ class _CurrencyConverterRowState extends State<CurrencyConverterRow> {
 
   Widget _buildTextFieldWidget() {
     return TextField(
-      inputFormatters: [
-        MoneyInputFormatter(
-          leadingSymbol: MoneySymbols.DOLLAR_SIGN,
-          useSymbolPadding: true,
-          thousandSeparator: ThousandSeparator.None,
-        ),
-      ],
       readOnly: widget.readOnly,
       controller: widget.controller,
       keyboardType: TextInputType.number,

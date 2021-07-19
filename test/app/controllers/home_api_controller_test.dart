@@ -1,10 +1,11 @@
 import 'package:currency_converter/app/controllers/home_api_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 main() {
-  final TextEditingController fromTextField = TextEditingController();
-  final TextEditingController toTextField = TextEditingController();
+  final MoneyMaskedTextController fromTextField = MoneyMaskedTextController();
+  final MoneyMaskedTextController toTextField = MoneyMaskedTextController();
   final homeApiController =
       HomeApiController(fromTextField: fromTextField, toTextField: toTextField);
 

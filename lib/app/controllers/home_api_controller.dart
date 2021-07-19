@@ -1,14 +1,14 @@
 import 'package:currency_converter/app/models/hg_api_model.dart';
 import 'package:currency_converter/app/repositories/hg_api_repository.dart';
+import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 
 class HomeApiController {
   List<Currency> currencies = [];
   Currency? toCurrency;
   Currency? fromCurrency;
-  final TextEditingController fromTextField;
-  final TextEditingController toTextField;
+  final MoneyMaskedTextController fromTextField;
+  final MoneyMaskedTextController toTextField;
   final _apiRepo = HgApiRepository();
   ValueNotifier<CurrencyState> controllerState =
       ValueNotifier<CurrencyState>(CurrencyState.starting);
@@ -29,16 +29,11 @@ class HomeApiController {
   }
 
   void convert() {
-    String text = fromTextField.text.replaceFirst("\$ ", "");
-    double fromValue = double.tryParse(text) ?? 1.0;
+    double fromValue =
+        fromTextField.numberValue > 0 ? fromTextField.numberValue : 1.0;
     double toValue = 0;
     toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
-    toTextField.text = toCurrencyString(
-      toValue.toStringAsFixed(2),
-      leadingSymbol: '\$',
-      useSymbolPadding: true,
-      thousandSeparator: ThousandSeparator.None,
-    );
+    toTextField.text = toValue.toStringAsFixed(2);
   }
 }
 
