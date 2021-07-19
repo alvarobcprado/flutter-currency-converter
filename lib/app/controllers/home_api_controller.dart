@@ -29,8 +29,7 @@ class HomeApiController {
   }
 
   void convert() {
-    double fromValue =
-        fromTextField.numberValue > 0 ? fromTextField.numberValue : 1.0;
+    double fromValue = fromTextField.numberValue;
     double toValue = 0;
     toValue = fromValue * (fromCurrency!.buy / toCurrency!.buy);
     toTextField.text = toValue.toStringAsFixed(2);
