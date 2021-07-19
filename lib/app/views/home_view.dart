@@ -52,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
       children: [
         CurrencyConverterRow(
           readOnly: false,
-          label: "Convert",
+          label: "Value to convert",
           options: homeCtrl.currencies,
           selectedItem: homeCtrl.fromCurrency,
           controller: homeCtrl.fromTextField,
@@ -65,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
         ),
         CurrencyConverterRow(
           readOnly: true,
-          label: "Result",
+          label: "Result from convert",
           options: homeCtrl.currencies,
           selectedItem: homeCtrl.toCurrency,
           controller: homeCtrl.toTextField,
@@ -77,7 +77,7 @@ class _HomeViewState extends State<HomeView> {
           },
         ),
         SizedBox(height: 50),
-        ButtonWidget(name: "Converter", onPressed: homeCtrl.convert),
+        ButtonWidget(name: "Convert", onPressed: homeCtrl.convert),
       ],
     );
   }
