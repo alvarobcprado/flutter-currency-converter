@@ -7,22 +7,34 @@ A simple Flutter project made to currency convert using currencies data from [HG
 </p>
 
 ## Requirements:
-To run this project you'll need:
+### To run this project you'll need:
 1. [Dart](https://dart.dev) (Recommended: 2.13)
 2. [Flutter](https://flutter.dev) (Recommended: 2.2 - channel stable)
 
 ## How to run this project:
 
-1. Clone the project repository
-    ```
-    git clone https://github.com/Instantki/currency-converter.git
-    ```
+### Step 1:
+Clone the project repository
+```
+git clone https://github.com/Instantki/currency-converter.git
+cd currency-converter
+```
+### Step 2:
+Install the project dependencies
+```
+flutter pub get
+```
 
-2. Start the project
-In the project directory, with your smartphone connected or emulator opened
-    ```
-    flutter run
-    ```
+### Step 3:
+With your smartphone connected or the emulator opened, start the project.
+```
+flutter run
+```
+
+## Libraries & Tools Used
+- [Dio](https://pub.dev/packages/dio)
+- [Extended Masked Text](https://pub.dev/packages/extended_masked_text)
+- [Json Serialization](https://javiercbk.github.io/json_to_dart/)
 
 <br/>
 
