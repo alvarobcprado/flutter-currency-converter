@@ -1,16 +1,29 @@
-# currency_converter
+# Currency Converter
 
-A new Flutter project.
+A simple Flutter project made to currency convert using currencies data from [HG Finance API](https://hgbrasil.com/status/finance).
 
-## Getting Started
+<p align="center">
+<img src="assets/github/gif.gif" width="288" height="624">
+</p>
 
-This project is a starting point for a Flutter application.
+## Requirements:
+To run this project you'll need:
+1. [Dart](https://dart.dev) (Recommended: 2.13)
+2. [Flutter](https://flutter.dev) (Recommended: 2.2 - channel stable)
 
-A few resources to get you started if this is your first Flutter project:
+## How to run this project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+1. Clone the project repository
+    ```
+    git clone https://github.com/Instantki/currency-converter.git
+    ```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Start the project
+In the project directory, with your smartphone connected or emulator opened
+    ```
+    flutter run
+    ```
+
+<br/>
+
+### Developed by Álvaro Prado
