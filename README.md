@@ -6,12 +6,7 @@ A simple Flutter project made to currency convert using currencies data from [HG
 <img src="assets/github/gif.gif" width="288" height="624">
 </p>
 
-## Requirements:
-### To run this project you'll need:
-1. [Dart](https://dart.dev) (Recommended: 2.13)
-2. [Flutter](https://flutter.dev) (Recommended: 2.2 - channel stable)
-
-## How to run this project:
+## How to Use:
 
 ### Step 1:
 Clone the project repository
