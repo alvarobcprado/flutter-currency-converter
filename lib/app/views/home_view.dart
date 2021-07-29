@@ -124,10 +124,13 @@ class _HomeViewState extends State<HomeView> {
         padding: EdgeInsets.symmetric(horizontal: 20),
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 50, top: 80),
+            padding: EdgeInsets.only(
+              bottom: (MediaQuery.of(context).size.height * 0.05),
+              top: (MediaQuery.of(context).size.height * 0.07),
+            ),
             child: Image.asset(
               "assets/money.png",
-              height: 200,
+              height: (MediaQuery.of(context).size.height * 0.25),
             ),
           ),
           ValueListenableBuilder(
